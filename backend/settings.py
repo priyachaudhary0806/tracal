@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days
 
     # MongoDB connection string
-    MONGO_DETAILS: str = Field(default="mongodb://localhost:27017", env="MONGODB_URI")
+    MONGO_DETAILS: str = Field(default="mongodb://localhost:27017", validation_alias="MONGODB_URI")
 
     # CORS / allowed origins – comma‑separated list. Empty = allow all (dev only).
     ALLOWED_ORIGINS: str = ""
