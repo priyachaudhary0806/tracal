@@ -253,7 +253,7 @@ const EditModal = () => {
                     <button 
                       type="button" 
                       onClick={() => {
-                        const remaining = currentImages.split(",").filter((i) => i !== img).join(",");
+                        const remaining = currentImages.split(",").filter((i: string) => i !== img).join(",");
                         setCustomValue("imageSrc", remaining);
                       }}
                       className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition shadow"
