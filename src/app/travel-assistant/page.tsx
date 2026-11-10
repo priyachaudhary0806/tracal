@@ -1,14 +1,25 @@
+import { Suspense } from "react";
 import getCurrentUser from "@/actions/getCurrentUser";
 import TravelAssistantClient from "./TravelAssistantClient";
 
 export const metadata = {
   title: "AI Travel Assistant | TRACAL",
-  description: "Plan smart trip budgets, discover your AI travel personality, and explore local attractions with TRACAL.",
+  description:
+    "Plan smart trip budgets, discover your AI travel personality, and explore local attractions with TRACAL.",
 };
 
 export default async function TravelAssistantPage() {
   const currentUser = await getCurrentUser();
 
-  return <TravelAssistantClient currentUser={currentUser} />;
+  return (
+    <Suspense
+      fallback={
+        <div className="p-8 text-center">
+          Loading Travel Assistant...
+        </div>
+      }
+    >
+      <TravelAssistantClient currentUser={currentUser} />
+    </Suspense>
+  );
 }
-
