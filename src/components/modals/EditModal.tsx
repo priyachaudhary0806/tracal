@@ -247,7 +247,7 @@ const EditModal = () => {
         </div>
         {currentImages && (
            <div className="flex flex-wrap gap-2 mt-4 max-h-[200px] overflow-y-auto">
-               {currentImages.split(",").map((img) => (
+               {currentImages.split(",").map((img: string) => (
                   <div key={img} className="relative group">
                     <img src={img} alt="uploaded preview" className="w-20 h-20 object-cover rounded shadow" />
                     <button 
