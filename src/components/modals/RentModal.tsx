@@ -295,13 +295,13 @@ const RentModal = () => {
         </label>
         {currentImages && (
           <div className="flex flex-wrap gap-2 max-h-[180px] overflow-y-auto">
-            {currentImages.split(",").filter(Boolean).map((img) => (
+           {currentImages.split(",").filter(Boolean).map((img: string) => (
               <div key={img} className="relative group">
                 <img src={img} alt="preview" className="w-20 h-20 object-cover rounded-lg shadow" />
                 <button
                   type="button"
                   onClick={() => {
-                    const remaining = currentImages.split(",").filter((i) => i !== img).join(",");
+                    const remaining = currentImages.split(",").filter((i: string) => i !== img).join(",");
                     setCustomValue("imageSrc", remaining);
                   }}
                   className="absolute -top-1 -right-1 bg-rose-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition shadow"
