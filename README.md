@@ -1,138 +1,265 @@
-# TRACAL - Authentic Homestay Experience Platform with Integrated AI
+# TRACAL 
+### Authentic Homestay Experience Platform with Integrated AI
 
-TRACAL is a full-stack homestay platform connecting travellers seeking authentic local experiences with verified hosts. It integrates a comprehensive suite of 6 AI-powered features across Guest, Host, and Administrator roles with free, unrestricted access.
+TRACAL is a full-stack, AI-powered homestay booking platform connecting travellers seeking authentic local experiences with hosts.
+
+It combines intelligent travel planning, personalized recommendations, property management, trust evaluation, and AI-powered insights across Guest, Host, and Administrator roles.
 
 ---
 
-## 🌟 Integrated AI Features
+##  Integrated AI Features
 
 ### 1. Smart Trip Budget Planner
 - **Audience:** Guests / Travellers
-- **Location:** `/travel-assistant` (Budget Tab)
-- **Description:** Computes an intelligent, itemized trip budget breakdown covering accommodation, local food, transportation, and discretionary activities based on destination, travel duration, group size, and total planned budget. Identifies surplus or shortfall and highlights homestay recommendations fitting the budget.
+- **Location:** `/travel-assistant`
+- Calculates itemized trip budgets covering accommodation, food, transportation, and activities.
+- Considers destination, travel duration, group size, and planned budget.
+- Identifies budget surplus or shortfall and suggests suitable homestays.
 
 ### 2. AI Travel Personality
-- **Audience:** Guests / Travellers & Admin
-- **Location:** `/travel-assistant` (Personality Tab) & Navbar dropdown
-- **Description:** Interactive 5-question psychological travel questionnaire evaluating pacing, social preferences, nature orientation, and culinary curiosity. Matches users to one of 4 curated travel archetypes (*The Mindful Explorer*, *The Heritage Seeker*, *The Thrill Seeker*, *The Serene Wanderer*), assigns custom mottoes and badges, and preserves assessment history.
+- **Audience:** Guests / Travellers
+- **Location:** `/travel-assistant`
+- Interactive travel personality questionnaire.
+- Identifies travel preferences and matches users with four travel archetypes:
+  - The Mindful Explorer
+  - The Heritage Seeker
+  - The Thrill Seeker
+  - The Serene Wanderer
+- Provides personalized travel insights.
 
 ### 3. Local Explorer
 - **Audience:** Guests / Travellers
-- **Location:** `/travel-assistant` (Local Explorer Tab)
-- **Description:** Powered by OpenStreetMap (Nominatim & Overpass API), this tool surfaces verified nearby restaurants, hospitals & medical facilities, tourist attractions, cafes, ATMs, and shopping locations around selected destinations and homestays. Features precise Haversine distance calculations and zero external API keys or billing accounts required.
+- **Location:** `/travel-assistant`
+- Powered by OpenStreetMap, Nominatim, and Overpass API.
+- Discovers nearby:
+  - Restaurants
+  - Hospitals
+  - Tourist attractions
+  - Cafes
+  - ATMs
+  - Shopping locations
+- Includes distance calculations using the Haversine formula.
+- Does not require Google Places API billing.
 
 ### 4. TrustScore
-- **Audience:** Guests (Listing details), Hosts (Dashboard), Admin (Monitoring)
-- **Location:** Homestay details page, Host Dashboard (`/host#ai-host-insights`), `/admin/ai-monitoring`
-- **Description:** Algorithmic transparency score (0–100) combining Host Identity Verification (30 pts), Guest Review Sentiment & Quantity (30 pts), Host Response Rate & Reliability (20 pts), and Listing Profile Completeness (20 pts). Accompanied by actionable improvement tips for hosts.
+- **Audience:** Guests, Hosts, and Admin
+- Evaluates property trustworthiness using a 0–100 scoring system.
+- Considers:
+  - Host identity verification
+  - Guest reviews and sentiment
+  - Host response rate and reliability
+  - Listing profile completeness
+- Provides actionable improvement suggestions.
 
 ### 5. AI Review Intelligence
-- **Audience:** Guests & Property Hosts
-- **Location:** Homestay details page & Host AI Insights
-- **Description:** Analyzes homestay review collections via Google Gemini to extract honest guest sentiment, top 3 pros, top 3 cons, noise/cleanliness ratings, and an objective summary. Features strict ownership IDOR access controls.
+- **Audience:** Guests and Hosts
+- Analyzes property reviews using Google Gemini.
+- Extracts:
+  - Guest sentiment
+  - Top advantages and disadvantages
+  - Cleanliness and noise-related feedback
+  - Objective review summaries
 
 ### 6. Reality Check
-- **Audience:** Guests & Property Hosts
-- **Location:** Homestay details page & Host AI Insights
-- **Description:** Evaluates listings for expectation-vs-reality gaps by comparing host marketing descriptions with authentic guest feedback. Flags potential trade-offs (e.g. accessibility, Wi-Fi speed in remote regions, steep terrain) so guests know exactly what to expect.
+- **Audience:** Guests and Hosts
+- Compares host property descriptions with actual guest feedback.
+- Identifies potential expectation-versus-reality gaps.
+- Highlights possible trade-offs involving accessibility, Wi-Fi, location, and other property conditions.
+
+### Additional AI Capabilities
+- AI Host Insights
+- Admin AI Monitoring
+- Personalized Homestay Recommendations
+- AI-Assisted Travel Planning
 
 ---
 
-## 👥 Role-Based Access Points
+## Role-Based Portals
 
-| Role | Access Points & Navigation |
-|---|---|
-| **Guest / Traveller** | - **Home Page Hero Banner**: Quick 1-click launch to Travel Assistant<br>- **Navigation Bar**: Quick "AI Assistant" button & User Menu links<br>- **Travel Assistant (`/travel-assistant`)**: Unified hub for Budget, Personality, and Explorer<br>- **Homestay Details**: Integrated AI panel for TrustScore, Review Intelligence, and Reality Check |
-| **Host** | - **Host Dashboard (`/host#ai-host-insights`)**: AI Host Insights panel with property selector<br>- **My Properties (`/properties`)**: Direct link to AI performance and TrustScore insights<br>- **Actionable Recommendations**: Tips to increase listing TrustScore and address guest feedback |
-| **Administrator** | - **Admin Dashboard (`/admin`)**: AI Monitoring quick-access tile<br>- **AI Monitoring Dashboard (`/admin/ai-monitoring`)**: Live status of Gemini API & OpenStreetMap services, total profiles generated, TrustScore ecosystem health, and feature latency checks |
+### Guest Portal
+- Explore and search homestays.
+- View property details and availability.
+- Book homestays.
+- Manage reservations and favorites.
+- Access personalized recommendations.
+- Use AI Travel Assistant.
+- Explore property TrustScore and AI reviews.
+
+### Host Portal
+- Create and manage property listings.
+- Manage bookings and availability.
+- Submit host verification requests.
+- Access AI Host Insights.
+- Monitor property TrustScore.
+- Receive actionable recommendations.
+
+### Administrator Portal
+- Manage users and properties.
+- Review host verification requests.
+- Monitor bookings and platform activity.
+- Access analytics.
+- Monitor AI services and feature performance.
 
 ---
 
-## ⚙️ Environment Configuration
+## Technology Stack
 
-### Backend (`backend/.env`)
-Create `backend/.env` with the following variables:
+**Frontend**
+- Next.js
+- React.js
+- TypeScript
+- Tailwind CSS
 
-```ini
-# Core Configuration
-JWT_SECRET_KEY=your_secure_jwt_secret_key
+**Backend**
+- Python
+- FastAPI
+- REST APIs
+
+**Database**
+- MongoDB
+
+**Artificial Intelligence**
+- Google Gemini API
+
+**External Integrations**
+- OpenStreetMap
+- Nominatim
+- Overpass API
+- Razorpay
+- JWT Authentication
+
+---
+
+##  Project Architecture
+
+TRACAL follows a frontend-backend architecture.
+
+- Frontend: Next.js application
+- Backend: FastAPI REST API
+- Database: MongoDB
+- AI Services: Gemini-powered intelligence features
+- Authentication: JWT-based authentication
+- Payments: Razorpay integration
+
+---
+
+##  Environment Configuration
+
+### Backend
+
+Create a `backend/.env` file.
+
+Configure the following variables with your own credentials:
+
+```env
+JWT_SECRET_KEY=your_secure_jwt_secret
 MONGODB_URI=mongodb://localhost:27017
 ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 
-# Admin Seed Account
 ADMIN_EMAIL=admin@tracal.com
 ADMIN_PASSWORD=your_secure_admin_password
 
-# External AI & Places Services
-# Google Gemini API Key (for AI Travel Personality, Review Intelligence, Reality Check)
-# Obtain from: https://aistudio.google.com/
 GEMINI_API_KEY=your_gemini_api_key
 
-# Local Explorer: Powered by OpenStreetMap (Nominatim & Overpass API).
-# Zero API keys or billing required!
-
-# Payment Gateway (Razorpay)
-RAZORPAY_KEY_ID=rzp_test_your_key_id
+RAZORPAY_KEY_ID=your_razorpay_key_id
 RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 
-# Email Service (Gmail SMTP)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your_email@gmail.com
-SMTP_PASSWORD=your_16_char_app_password
+SMTP_PASSWORD=your_email_app_password
 FROM_EMAIL=your_email@gmail.com
 ```
 
-### Frontend (`.env.local`)
+### Frontend
+
 Create `.env.local` in the project root:
 
-```ini
+```env
 NEXT_PUBLIC_API_URL=http://localhost:8000
 API_URL=http://127.0.0.1:8000
 ```
 
-> **Security Rule:** Secret keys (`GEMINI_API_KEY`, `GOOGLE_PLACES_API_KEY`, `JWT_SECRET_KEY`, `MONGODB_URI`, `RAZORPAY_KEY_SECRET`) must exist exclusively in `backend/.env`. Never expose secret keys in client-side code or `NEXT_PUBLIC_` variables.
+**Security:** Never upload actual API keys, passwords, database credentials, or secret environment files to GitHub.
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Start the Backend API Server
+### 1. Clone the Repository
+
 ```bash
-# Activate virtual environment or install dependencies
-pip install -r backend/requirements.txt  # or your python environment
-
-# Seed the secure admin account (idempotent)
-python backend/seed_admin.py
-
-# Start FastAPI server
-uvicorn backend.main:app --reload --port 8000
+git clone https://github.com/priyachaudhary0806/tracal.git
+cd tracal
 ```
-Backend API interactive documentation is available at [http://localhost:8000/docs](http://localhost:8000/docs).
 
-### 2. Start the Frontend Next.js Server
+### 2. Backend Setup
+
 ```bash
-# Install dependencies
-npm install
+pip install -r backend/requirements.txt
+python backend/seed_admin.py
+python -m uvicorn backend.main:app --reload --port 8000
+```
 
-# Start development server
+Backend API documentation:
+
+`http://localhost:8000/docs`
+
+### 3. Frontend Setup
+
+Open another terminal:
+
+```bash
+npm install
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Open the application:
+
+`http://localhost:3000`
+
+Make sure MongoDB is running and both environment files are configured before starting the application.
 
 ---
 
-## 🧪 Verification & Testing
+## 🎯 Project Vision
 
-An end-to-end verification script is included in `scratch/test_ai_endpoints.py`. It tests:
-1. Smart Trip Budget Planner calculation and shortfall logic.
-2. AI Travel Personality questionnaire, archetype computation, and assessment persistence.
-3. Local Explorer Google Places key detection and graceful fallback.
-4. TrustScore multi-component calculation for both guests and hosts.
-5. AI Review Intelligence and IDOR authorization checks (enforcing HTTP 403 on non-owners).
-6. Reality Check expectation analysis and host permission checks.
+Our vision is to simplify travel experiences by combining homestay discovery, intelligent planning, trustworthy property information, and personalized AI assistance.
 
-To execute the verification suite:
-```bash
-python scratch/test_ai_endpoints.py
-```
+TRACAL aims to make travel smarter, safer, and more convenient for travellers and property hosts.
+
+---
+
+## © Copyright & Ownership
+
+Copyright © 2026 Kumari Priya / TRACAL Original Project Authors.
+
+TRACAL is an original project. Its original design, architecture, source code, implementation, and documentation are the intellectual work of its respective authors.
+
+This repository is publicly available for portfolio visibility, educational reference, and collaboration.
+
+**Important Notice:**
+- Do not claim the original project or its work as your own.
+- Proper credit must be given to the original authors when referencing this project.
+- Contributions are welcome through Pull Requests.
+- Unauthorized copying, redistribution, modification, or commercial use is not permitted without prior written permission, except where expressly permitted by the applicable license.
+
+---
+
+## 🤝 Contributions
+
+Genuine contributions and improvements are welcome.
+
+All contributions should be submitted through GitHub Pull Requests and are subject to review.
+
+Contributors must respect the original authorship and ownership of TRACAL.
+
+---
+
+## 📌 Repository
+
+GitHub: https://github.com/priyachaudhary0806/tracal
+
+---
+
+**Built with innovation, technology, and a vision to make travel smarter.**
