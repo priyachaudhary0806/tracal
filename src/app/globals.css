@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
+/* react-date-range base CSS — must be imported before our overrides */
+@import "react-date-range/dist/styles.css";
+@import "react-date-range/dist/theme/default.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #f97316; /* Orange 500 */
+  --secondary: #14b8a6; /* Teal 500 */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0f172a; /* Slate 900 */
+  --foreground: #f8fafc; /* Slate 50 */
+  --primary: #ea580c; /* Orange 600 */
+  --secondary: #0d9488; /* Teal 600 */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Base interactive elements to use the theme */
+.btn-primary {
+  @apply bg-[var(--primary)] text-white font-semibold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity;
+}
+.btn-secondary {
+  @apply bg-[var(--secondary)] text-white font-semibold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity;
+}
+
+/* -------------------------------------------------------------------------
+   react-date-range theme overrides
+   Scoped to .tracal-date-picker so they don't bleed into the rest of the app.
+   ------------------------------------------------------------------------- */
+.tracal-date-picker .rdrCalendarWrapper {
+  width: 100%;
+  font-size: 13px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+/* Selected range fill — use --primary orange */
+.tracal-date-picker .rdrDayStartPreview,
+.tracal-date-picker .rdrDayEndPreview,
+.tracal-date-picker .rdrDayInPreview {
+  border-color: var(--primary);
+}
+
+.tracal-date-picker .rdrSelected,
+.tracal-date-picker .rdrStartEdge,
+.tracal-date-picker .rdrEndEdge {
+  background: var(--primary);
+}
+
+.tracal-date-picker .rdrInRange {
+  background: var(--primary);
+  opacity: 0.18;
+}
+
+.tracal-date-picker .rdrDayToday .rdrDayNumber span:after {
+  background: var(--primary);
+}
+
+/* Month/navigation header */
+.tracal-date-picker .rdrMonthAndYearPickers select:hover,
+.tracal-date-picker .rdrPprevButton:hover,
+.tracal-date-picker .rdrNextButton:hover {
+  background: #f1f5f9;
+}
+
+/* Dark-mode overrides */
+.dark .tracal-date-picker .rdrCalendarWrapper {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+.dark .tracal-date-picker .rdrMonthAndYearPickers select {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+.dark .tracal-date-picker .rdrDayNumber span {
+  color: #f8fafc;
+}
+
+.dark .tracal-date-picker .rdrDayPassive .rdrDayNumber span {
+  color: #64748b;
+}
+
+.dark .tracal-date-picker .rdrDayDisabled {
+  background: transparent;
+}
+
+.dark .tracal-date-picker .rdrDayDisabled .rdrDayNumber span {
+  color: #475569;
+}
+
+.dark .tracal-date-picker .rdrMonthPicker select,
+.dark .tracal-date-picker .rdrYearPicker select {
+  color: #f8fafc;
+}
+
+.dark .tracal-date-picker .rdrPprevButton i,
+.dark .tracal-date-picker .rdrNextButton i {
+  border-color: transparent #94a3b8 transparent transparent;
+}
+
+.dark .tracal-date-picker .rdrNextButton i {
+  border-color: transparent transparent transparent #94a3b8;
+}
+
+.dark .tracal-date-picker .rdrWeekDay {
+  color: #94a3b8;
 }
